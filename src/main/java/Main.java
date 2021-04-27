@@ -24,6 +24,7 @@ public class Main {
                     break;
             }
             brawser.close();
+            
         //email.sendKeys((CharSequence) "xa12284003@student.karazin.ua", Keys.ENTER);
        /* Actions builder = new Actions(driver);
         builder.keyDown(Keys.TAB).perform();*/
