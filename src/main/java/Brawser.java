@@ -24,6 +24,10 @@ public class Brawser {
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);
 
+        String FILE_NAME_PROFILE = "C:\\Users\\User\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1";
+        options.addArguments("user-data-dir=" + FILE_NAME_PROFILE);
+
+
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\PairShedule\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver(options);
         try {
@@ -36,9 +40,10 @@ public class Brawser {
     public void authorizate(){
         driver.get(AUTHORIZATION_PAGE);
         sleep(2);
-        driver.findElement(By.id("identifierId")).click();
+        driver.findElement(By.xpath("//*[@id=\"identifierId\"]")).click();
         sleep(1);
         keyboard.setEnglish();
+        //driver.findElement(By.xpath("//*[@id=\"view_container\"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[3]")).click();
         keyboard.type(user.getEmail());
         driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/div/button/div[2]")).click();
         sleep(2);
@@ -49,11 +54,15 @@ public class Brawser {
     }
 
     public void connectToPair(Pair pair){
-        driver.get(pair.getLink());
-        sleep(2);
-        keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);
-        keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);
-        driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span")).click();
+        String link = pair.getLink();
+        driver.get(link);
+        keyboard.clickKeys(KeyEvent.VK_ENTER);
+        sleep(3);
+        if(!link.contains("zoom")) {
+            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);
+            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);
+            driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span")).click();
+        }
     }
 
     public void close(){

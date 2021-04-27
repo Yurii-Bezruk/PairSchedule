@@ -1,5 +1,4 @@
-import days.Monday;
-import days.Wednesday;
+import days.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +14,10 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
             Brawser brawser = new Brawser(Account.loadFromFile("account.txt"));
-            brawser.authorizate();
-            brawser.connectToPair(new Monday().getPair(1));
+            //brawser.authorizate();
+            brawser.connectToPair(new Friday().getPair(3));
+            Thread.sleep(2000);
+            brawser.connectToPair(new Friday().getPair(4));
 
             Scanner s = new Scanner(System.in);
             while(true){
@@ -24,7 +25,7 @@ public class Main {
                     break;
             }
             brawser.close();
-            
+
         //email.sendKeys((CharSequence) "xa12284003@student.karazin.ua", Keys.ENTER);
        /* Actions builder = new Actions(driver);
         builder.keyDown(Keys.TAB).perform();*/
