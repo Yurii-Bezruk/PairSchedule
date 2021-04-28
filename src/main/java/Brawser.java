@@ -11,24 +11,21 @@ import java.util.Map;
 
 public class Brawser {
     private static final String AUTHORIZATION_PAGE = "https://accounts.google.com/signin/v2/challenge/pwd?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin&cid=1&navigationDirection=forward&TL=AM3QAYZo-81FtA5whALcGueua3MT2F7xE1GuyFnNVc4CK9Ozbwcio27UY-jW_Ftb";
+    private static final By emailField = By.xpath("//*[@id=\"identifierId\"]");
+    private static final By emailNext = By.xpath("//*[@id=\"identifierNext\"]/div/button/div[2]");
+    private static final By passwordField = By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input");
+    private static final By passwordNext = By.xpath("//*[@id=\"passwordNext\"]/div/button/div[2]");
+    private static final By join = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span");
+
     private WebDriver driver;
     private Keyboard keyboard;
     private Account user;
 
-    public Brawser(Account user) {
-        this.user = user;
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("profile.default_content_setting_values.notifications", 2);   //выкл всплывашки
-        prefs.put("profile.default_content_setting_values.media_stream_mic", 1);    //вкл микро
-        prefs.put("profile.default_content_setting_values.media_stream_camera",1);  //вкл камера
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", prefs);
-
+    public Brawser() {
+        ChromeOptions options = initializeOptions();
         String FILE_NAME_PROFILE = "C:\\Users\\User\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1";
-        options.addArguments("user-data-dir=" + FILE_NAME_PROFILE);
+        options.addArguments("user-data-dir=" + FILE_NAME_PROFILE); //using default account
 
-
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\PairShedule\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver(options);
         try {
             keyboard = new Keyboard();
@@ -37,19 +34,41 @@ public class Brawser {
         }
     }
 
-    public void authorizate(){
+    public Brawser(Account user) {
+        ChromeOptions options = initializeOptions();
+        driver = new ChromeDriver(options);
+        try {
+            keyboard = new Keyboard();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        this.user = user;
+    }
+    private ChromeOptions initializeOptions(){
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\PairShedule\\chromedriver_win32\\chromedriver.exe");
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);   //disable notifications
+        prefs.put("profile.default_content_setting_values.media_stream_mic", 1);    //allow micro
+        prefs.put("profile.default_content_setting_values.media_stream_camera",1);  //allow camera
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", prefs);
+        return options;
+    }
+
+    public void authorizate() throws UserNotDefinedException{
+        if(user == null)
+            throw new UserNotDefinedException();
         driver.get(AUTHORIZATION_PAGE);
         sleep(2);
-        driver.findElement(By.xpath("//*[@id=\"identifierId\"]")).click();
+        driver.findElement(emailField).click();
         sleep(1);
         keyboard.setEnglish();
-        //driver.findElement(By.xpath("//*[@id=\"view_container\"]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[3]")).click();
         keyboard.type(user.getEmail());
-        driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/div/button/div[2]")).click();
+        driver.findElement(emailNext).click();
         sleep(2);
-        driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")).click();
+        driver.findElement(passwordField).click();
         keyboard.type(user.getPassword());
-        driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/div[2]")).click();
+        driver.findElement(passwordNext).click();
         sleep(2);
     }
 
@@ -59,9 +78,9 @@ public class Brawser {
         keyboard.clickKeys(KeyEvent.VK_ENTER);
         sleep(3);
         if(!link.contains("zoom")) {
-            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);
-            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);
-            driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span")).click();
+            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);        //mute micro
+            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);         //mute camera
+            driver.findElement(join).click();
         }
     }
 

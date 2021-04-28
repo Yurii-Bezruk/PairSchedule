@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.Scanner;
+
 public class Account {
     private String email;
     private String password;
@@ -7,8 +10,12 @@ public class Account {
         this.email = email;
         this.password = password;
     }
-    public static Account loadFromFile(String filepath) {
-        return new Account("xa12284003@student.karazin.ua", "fastumgel");
+    public static Account loadFromFile(String filepath) throws IOException {
+        Scanner reader = new Scanner(new FileInputStream(filepath));
+        String email = reader.next();
+        String password = reader.next();
+        reader.close();
+        return new Account(email, password);
     }
 
     public String getEmail() {

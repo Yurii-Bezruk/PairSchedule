@@ -8,14 +8,20 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-            Brawser brawser = new Brawser(Account.loadFromFile("account.txt"));
-            //brawser.authorizate();
-            brawser.connectToPair(new Friday().getPair(3));
+        Brawser brawser = null;
+        brawser = new Brawser();
+        /*try {
+            brawser.authorizate();
+        } catch (UserNotDefinedException e) {
+            e.printStackTrace();
+        }*/
+        brawser.connectToPair(new Friday().getPair(3));
             Thread.sleep(2000);
             brawser.connectToPair(new Friday().getPair(4));
 
