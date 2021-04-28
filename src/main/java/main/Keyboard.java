@@ -1,3 +1,5 @@
+package main;
+
 import sun.awt.im.InputMethodManager;
 
 import java.awt.*;

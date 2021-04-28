@@ -1,3 +1,5 @@
+package main;
+
 import exceptions.UserNotDefinedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +19,7 @@ public class Brawser {
     private static final By passwordField = By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input");
     private static final By passwordNext = By.xpath("//*[@id=\"passwordNext\"]/div/button/div[2]");
     private static final By join = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span");
+    private static final By leave = By.xpath("//*[@id=\"ow3\"]/div[1]/div/div[9]/div[3]/div[9]/div[2]/div[2]/div");
 
     private WebDriver driver;
     private Keyboard keyboard;
@@ -81,10 +84,15 @@ public class Brawser {
         driver.get(link);
         keyboard.clickKeys(KeyEvent.VK_ENTER);
         sleep(3);
-        if(!link.contains("zoom")) {
+        if(! link.contains("zoom")) {
             keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);        //mute micro
             keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);         //mute camera
             driver.findElement(join).click();
+        }
+    }
+    public void disconnectFromPair(Pair pair){
+        if(! pair.getLink().contains("zoom")) {
+            driver.findElement(leave).click();
         }
     }
 
