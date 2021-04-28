@@ -2,7 +2,7 @@ package tasks;
 
 import days.Day;
 import exceptions.PairNotAvailableException;
-import main.Browser;
+import start.Browser;
 
 public class DisconnectionPairTask extends PairTask{
     public DisconnectionPairTask(Day day, int pairNumber, Browser browser) {

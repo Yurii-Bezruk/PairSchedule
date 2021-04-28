@@ -1,7 +1,7 @@
 package tasks;
 
 import days.*;
-import main.Browser;
+import start.Browser;
 
 import java.util.TimerTask;
 
