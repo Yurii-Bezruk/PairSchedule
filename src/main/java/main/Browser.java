@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Brawser {
+public class Browser {
     private static final String AUTHORIZATION_PAGE = "https://accounts.google.com/signin/v2/challenge/pwd?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin&cid=1&navigationDirection=forward&TL=AM3QAYZo-81FtA5whALcGueua3MT2F7xE1GuyFnNVc4CK9Ozbwcio27UY-jW_Ftb";
     private static final By emailField = By.xpath("//*[@id=\"identifierId\"]");
     private static final By emailNext = By.xpath("//*[@id=\"identifierNext\"]/div/button/div[2]");
@@ -26,7 +26,7 @@ public class Brawser {
     private Account user;
     private boolean active;
 
-    public Brawser() {
+    public Browser() {
         ChromeOptions options = initializeOptions();
         String FILE_NAME_PROFILE = "C:\\Users\\User\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 1";
         options.addArguments("user-data-dir=" + FILE_NAME_PROFILE); //using default account
@@ -40,7 +40,7 @@ public class Brawser {
         active = true;
     }
 
-    public Brawser(Account user) {
+    public Browser(Account user) {
         ChromeOptions options = initializeOptions();
         driver = new ChromeDriver(options);
         try {

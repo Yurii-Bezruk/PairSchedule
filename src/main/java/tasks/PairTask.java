@@ -1,20 +1,19 @@
 package tasks;
 
 import days.*;
-import exceptions.PairNotAvailableException;
-import main.Brawser;
+import main.Browser;
 
 import java.util.TimerTask;
 
 public abstract class PairTask extends TimerTask {
-    protected Brawser brawser;
+    protected Browser browser;
     protected Day day;
     protected int pairNumber;
 
-    public PairTask(Day day, int pairNumber, Brawser brawser) {
+    public PairTask(Day day, int pairNumber, Browser browser) {
         this.day = day;
         this.pairNumber = pairNumber;
-        this.brawser = brawser;
+        this.browser = browser;
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException, PairNotAvailableException {
-        Brawser brawser = new Brawser();
+        Browser browser = new Browser();
         Day day = null;
         try {
             day = Day.getCurrentWorkingDayOfWeek();
@@ -19,9 +19,7 @@ public class Main {
             e.printStackTrace();
             return;
         }
-
-
-        TimerTask task = new ConnectionPairTask(day, 1, brawser);
+        TimerTask task = new ConnectionPairTask(day, 1, browser);
         Date now = new Date();
         now.setHours(8);
         now.setMinutes(30);
@@ -34,7 +32,7 @@ public class Main {
             if(s.next().equals("exit"))
                 break;
         }
-        brawser.close();
+        browser.close();
        //timer.cancel();
         System.out.println("TimerTask прекращена");
     }

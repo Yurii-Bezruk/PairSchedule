@@ -2,18 +2,18 @@ package tasks;
 
 import days.Day;
 import exceptions.PairNotAvailableException;
-import main.Brawser;
+import main.Browser;
 
 public class DisconnectionPairTask extends PairTask{
-    public DisconnectionPairTask(Day day, int pairNumber, Brawser brawser) {
-        super(day, pairNumber, brawser);
+    public DisconnectionPairTask(Day day, int pairNumber, Browser browser) {
+        super(day, pairNumber, browser);
     }
 
     @Override
     public void run() {
-        if (brawser.isActive()) {
+        if (browser.isActive()) {
             try {
-                brawser.disconnectFromPair(day.getPair(pairNumber));
+                browser.disconnectFromPair(day.getPair(pairNumber));
             } catch (PairNotAvailableException e) {}    //if pair is not available, do nothing
         }
     }

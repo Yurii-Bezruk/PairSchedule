@@ -2,19 +2,19 @@ package tasks;
 
 import days.Day;
 import exceptions.PairNotAvailableException;
-import main.Brawser;
+import main.Browser;
 
 public class ConnectionPairTask extends PairTask{
-    public ConnectionPairTask(Day day, int pairNumber, Brawser brawser) {
-        super(day, pairNumber, brawser);
+    public ConnectionPairTask(Day day, int pairNumber, Browser browser) {
+        super(day, pairNumber, browser);
     }
 
     @Override
     public void run() {
-        if(brawser == null || ! brawser.isActive())
-            brawser = new Brawser();
+        if(browser == null || ! browser.isActive())
+            browser = new Browser();
         try {
-            brawser.connectToPair(day.getPair(pairNumber));
+            browser.connectToPair(day.getPair(pairNumber));
         } catch (PairNotAvailableException e) {}    //if pair is not available, do nothing
     }
 }
