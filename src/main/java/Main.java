@@ -1,12 +1,18 @@
 import days.*;
+import exceptions.NotWorkingDayException;
+
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        new Wednesday().getPair(1);
-       /* Brawser brawser = new Brawser();
-        Day day;
+        Brawser brawser = new Brawser();
+        Day day = null;
+        try {
+            day = Day.getCurrentWorkingDayOfWeek();
+        } catch (NotWorkingDayException e) {
+            return;
+        }
 
 
         TimerTask task = new PairTask(day, 1, brawser);
@@ -36,6 +42,6 @@ public class Main {
                 break;
         }
         timer.cancel();
-        System.out.println("TimerTask прекращена");*/
+        System.out.println("TimerTask прекращена");
     }
 }

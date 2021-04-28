@@ -2,8 +2,8 @@ package days;
 import pairs.*;
 import java.util.HashMap;
 
-public class Thirsday extends Day{
-    public Thirsday() {
+public class Thursday extends Day{
+    public Thursday() {
         super(new HashMap<Integer, Pair>(){{
             put(2, new ApplicationProgrammingLanguagesPractice());
             put(3, new DataBaseAndKnowlegeOrganizingPractice());

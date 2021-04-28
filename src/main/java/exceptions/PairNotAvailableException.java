@@ -8,7 +8,7 @@ public class PairNotAvailableException extends Exception{
 
     @Override
     public void printStackTrace() {
-        System.err.println("Such pair is not available in this day :"+pairNumber);
+        System.err.println("Such pair is not available in this day: "+pairNumber);
         super.printStackTrace();
     }
 }
