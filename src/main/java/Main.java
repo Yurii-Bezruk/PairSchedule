@@ -1,43 +1,15 @@
 import days.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Brawser brawser = null;
-        brawser = new Brawser();
-        /*try {
-            brawser.authorizate();
-        } catch (UserNotDefinedException e) {
-            e.printStackTrace();
-        }*/
-        brawser.connectToPair(new Friday().getPair(3));
-            Thread.sleep(2000);
-            brawser.connectToPair(new Friday().getPair(4));
+        new Wednesday().getPair(1);
+       /* Brawser brawser = new Brawser();
+        Day day;
 
-            Scanner s = new Scanner(System.in);
-            while(true){
-                if(s.next().equals("exit"))
-                    break;
-            }
-            brawser.close();
 
-        //email.sendKeys((CharSequence) "xa12284003@student.karazin.ua", Keys.ENTER);
-       /* Actions builder = new Actions(driver);
-        builder.keyDown(Keys.TAB).perform();*/
-        //email.sendKeys((CharSequence) "xa12284003@student.karazin.ua");
-        //driver.findElement()
-        /*TimerTask task = new PairTask();
+        TimerTask task = new PairTask(day, 1, brawser);
         Date now = new Date();
         int hours, minutes;
         try {
@@ -58,36 +30,12 @@ public class Main {
         //System.out.println(now);
 
         // вызываем cancel() через какое-то время
-        try {
-            Thread.currentThread().join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        Scanner s = new Scanner(System.in);
+        while(true){
+            if(s.next().equals("exit"))
+                break;
         }
-        /*timer.cancel();
-        System.out.println("TimerTask прекращена");
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        /*WebDriver driver;
-        System.setProperty("webdriver.chrome.driver", "chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-
-        driver.get("https://pn.com.ua//ct//1003");
-        try {
-            Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_T);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_T);
-
-            driver.get("https://pn.com.ua//ct//1003");
-            Thread.sleep(2000);
-            driver.get("https://pn.com.ua//ct//1003");
-        } catch (AWTException | InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.close();*/
+        timer.cancel();
+        System.out.println("TimerTask прекращена");*/
     }
 }

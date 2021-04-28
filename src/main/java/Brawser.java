@@ -1,3 +1,4 @@
+import exceptions.UserNotDefinedException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +21,7 @@ public class Brawser {
     private WebDriver driver;
     private Keyboard keyboard;
     private Account user;
+    private boolean active;
 
     public Brawser() {
         ChromeOptions options = initializeOptions();
@@ -32,6 +34,7 @@ public class Brawser {
         } catch (AWTException e) {
             e.printStackTrace();
         }
+        active = true;
     }
 
     public Brawser(Account user) {
@@ -43,6 +46,7 @@ public class Brawser {
             e.printStackTrace();
         }
         this.user = user;
+        active = true;
     }
     private ChromeOptions initializeOptions(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\PairShedule\\chromedriver_win32\\chromedriver.exe");
@@ -55,7 +59,7 @@ public class Brawser {
         return options;
     }
 
-    public void authorizate() throws UserNotDefinedException{
+    public void authorizate() throws UserNotDefinedException {
         if(user == null)
             throw new UserNotDefinedException();
         driver.get(AUTHORIZATION_PAGE);
@@ -84,8 +88,13 @@ public class Brawser {
         }
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
     public void close(){
         driver.close();
+        active = false;
     }
 
     private void sleep(double seconds){

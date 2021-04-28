@@ -1,3 +1,5 @@
+package exceptions;
+
 public class UserNotDefinedException extends Exception{
     @Override
     public void printStackTrace() {
