@@ -52,7 +52,7 @@ public class Browser {
         active = true;
     }
     private ChromeOptions initializeOptions(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\PairShedule\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver_win32\\chromedriver.exe");
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("profile.default_content_setting_values.notifications", 2);   //disable notifications
         prefs.put("profile.default_content_setting_values.media_stream_mic", 1);    //allow micro

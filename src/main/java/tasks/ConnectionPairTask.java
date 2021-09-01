@@ -4,7 +4,7 @@ import days.Day;
 import exceptions.PairNotAvailableException;
 import start.Browser;
 
-public class ConnectionPairTask extends PairTask{
+public class ConnectionPairTask extends PairTask {
     public ConnectionPairTask(Day day, int pairNumber, Browser browser) {
         super(day, pairNumber, browser);
     }

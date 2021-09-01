@@ -1,6 +1,6 @@
 package pairs;
 
-public abstract class Pair {
+public class Pair {
     private String link;
 
     public Pair(String link) {

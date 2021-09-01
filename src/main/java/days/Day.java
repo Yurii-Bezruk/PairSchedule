@@ -3,11 +3,12 @@ package days;
 import exceptions.NotWorkingDayException;
 import exceptions.PairNotAvailableException;
 import pairs.Pair;
+import start.Application;
 
 import java.util.Calendar;
 import java.util.Map;
 
-public abstract class Day {
+public class Day {
     private final Map<Integer,Pair> pairs;
 
     public Day(Map<Integer,Pair> pairs) {
@@ -26,15 +27,15 @@ public abstract class Day {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         switch (day) {
             case Calendar.MONDAY:
-                return new Monday();
+                return (Day) Application.CONTEXT.getBean("monday");
             case Calendar.TUESDAY:
-                return new Thuesday();
+                return (Day) Application.CONTEXT.getBean("tuesday");
             case Calendar.WEDNESDAY:
-                return new Wednesday();
+                return (Day) Application.CONTEXT.getBean("wednesday");
             case Calendar.THURSDAY:
-                return new Thursday();
+                return (Day) Application.CONTEXT.getBean("thursday");
             case Calendar.FRIDAY:
-                return new Friday();
+                return (Day) Application.CONTEXT.getBean("friday");
             default:
                 throw new NotWorkingDayException(day);
         }
