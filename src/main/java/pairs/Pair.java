@@ -1,7 +1,7 @@
 package pairs;
 
 public class Pair {
-    private String link;
+    private final String link;
 
     public Pair(String link) {
         this.link = link;

@@ -27,15 +27,15 @@ public class Day {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         switch (day) {
             case Calendar.MONDAY:
-                return (Day) Application.CONTEXT.getBean("monday");
+                return Application.CONTEXT.getBean("monday", Day.class);
             case Calendar.TUESDAY:
-                return (Day) Application.CONTEXT.getBean("tuesday");
+                return Application.CONTEXT.getBean("tuesday", Day.class);
             case Calendar.WEDNESDAY:
-                return (Day) Application.CONTEXT.getBean("wednesday");
+                return Application.CONTEXT.getBean("wednesday", Day.class);
             case Calendar.THURSDAY:
-                return (Day) Application.CONTEXT.getBean("thursday");
+                return Application.CONTEXT.getBean("thursday", Day.class);
             case Calendar.FRIDAY:
-                return (Day) Application.CONTEXT.getBean("friday");
+                return Application.CONTEXT.getBean("friday", Day.class);
             default:
                 throw new NotWorkingDayException(day);
         }

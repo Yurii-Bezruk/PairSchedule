@@ -18,10 +18,10 @@ public class Browser {
     private static final By emailNext = By.xpath("//*[@id=\"identifierNext\"]/div/button/div[2]");
     private static final By passwordField = By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input");
     private static final By passwordNext = By.xpath("//*[@id=\"passwordNext\"]/div/button/div[2]");
-    private static final By join = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span");
-    private static final By leave = By.xpath("//*[@id=\"ow3\"]/div[1]/div/div[9]/div[3]/div[9]/div[2]/div[2]/div");
+    private static final By join = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span/span");
+    private static final By leave = By.xpath("//*button[@area-label=\"Завершити дзвінок\"]");
 
-    private WebDriver driver;
+    private final WebDriver driver;
     private Keyboard keyboard;
     private Account user;
     private boolean active;
@@ -52,13 +52,14 @@ public class Browser {
         active = true;
     }
     private ChromeOptions initializeOptions(){
-        System.setProperty("webdriver.chrome.driver", "chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("profile.default_content_setting_values.notifications", 2);   //disable notifications
         prefs.put("profile.default_content_setting_values.media_stream_mic", 1);    //allow micro
         prefs.put("profile.default_content_setting_values.media_stream_camera",1);  //allow camera
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);
+        options.setExperimentalOption("excludeSwitches", new String[] { "test-type" });
         return options;
     }
 
