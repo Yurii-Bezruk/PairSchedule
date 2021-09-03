@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="monday" class="days.Day">
+        <constructor-arg>
+            <map key-type="java.lang.Integer" value-type="pairs.Pair">
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="tuesday" class="days.Day">
+        <constructor-arg>
+            <map key-type="java.lang.Integer" value-type="pairs.Pair">
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="wednesday" class="days.Day">
+        <constructor-arg>
+            <map key-type="java.lang.Integer" value-type="pairs.Pair">
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="thursday" class="days.Day">
+        <constructor-arg>
+            <map key-type="java.lang.Integer" value-type="pairs.Pair">
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="friday" class="days.Day">
+        <constructor-arg>
+            <map key-type="java.lang.Integer" value-type="pairs.Pair">
+                <entry key="1" value-ref="mathematicMethodsOfOperationsResearchLecture"/>
+                <entry key="2" value-ref="expertSystemsTheoryAndIntellijDataAnalysis"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
