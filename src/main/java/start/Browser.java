@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pairs.Pair;
+import pairs.Meeting;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,8 +15,6 @@ import java.util.Map;
 public class Browser {
     private static final By join = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[9]/div[3]/div/div/div[4]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span/span");
     private static final By leave = By.xpath("//button[@aria-label=\"Завершити дзвінок\"]/i");
-
-
 
     private final WebDriver driver;
     private Keyboard keyboard;
@@ -47,8 +45,8 @@ public class Browser {
         return options;
     }
 
-    public void connectToPair(Pair pair){
-        String link = pair.getLink();
+    public void connectToMeeting(Meeting meeting){
+        String link = meeting.getLink();
         driver.get(link);
         keyboard.clickKeys(KeyEvent.VK_ENTER);
         sleep(3);
@@ -59,8 +57,8 @@ public class Browser {
             driver.findElement(join).click();
         }
     }
-    public void disconnectFromPair(Pair pair){
-        if(! pair.getLink().contains("zoom")) {
+    public void disconnectFromMeeting(Meeting meeting){
+        if(! meeting.getLink().contains("zoom")) {
             driver.findElement(leave).click();
         }
     }

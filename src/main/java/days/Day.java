@@ -1,26 +1,26 @@
 package days;
 
 import exceptions.NotWorkingDayException;
-import exceptions.PairNotAvailableException;
-import pairs.Pair;
+import exceptions.MeetingNotAvailableException;
+import pairs.Meeting;
 import start.Application;
 
 import java.util.Calendar;
 import java.util.Map;
 
 public class Day {
-    private final Map<Integer,Pair> pairs;
+    private final Map<Integer, Meeting> meeting;
 
-    public Day(Map<Integer,Pair> pairs) {
-        this.pairs = pairs;
+    public Day(Map<Integer, Meeting> meeting) {
+        this.meeting = meeting;
     }
 
-    public Pair getPair(int number) throws PairNotAvailableException {
-        Pair pair = pairs.get(number);
-        if (pair == null) {
-           throw new PairNotAvailableException(number);
+    public Meeting getPair(int number) throws MeetingNotAvailableException {
+        Meeting meeting = this.meeting.get(number);
+        if (meeting == null) {
+           throw new MeetingNotAvailableException(number);
         }
-        return pair;
+        return meeting;
     }
     public static Day getCurrentWorkingDayOfWeek() throws NotWorkingDayException {
         Calendar calendar = Calendar.getInstance();

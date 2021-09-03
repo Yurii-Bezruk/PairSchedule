@@ -2,11 +2,10 @@ package start;
 
 import days.*;
 import exceptions.NotWorkingDayException;
-import exceptions.PairNotAvailableException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import tasks.ConnectionPairTask;
-import tasks.DisconnectionPairTask;
+import tasks.ConnectionMeetingTask;
+import tasks.DisconnectionMeetingTask;
 
 import java.util.*;
 
@@ -29,18 +28,18 @@ public class Application {
         //day = CONTEXT.getBean("friday", Day.class);
         timer = new Timer(true);
 
-        task = new ConnectionPairTask(day, 1, browser);
+        task = new ConnectionMeetingTask(day, 1, browser);
         timer.schedule(task, Time.getTodayTime(9, 35));
 
-        task = new ConnectionPairTask(day, 2, browser);
+        task = new ConnectionMeetingTask(day, 2, browser);
         timer.schedule(task, Time.getTodayTime(17, 17));
 
-        task = new ConnectionPairTask(day, 3, browser);
+        task = new ConnectionMeetingTask(day, 3, browser);
         timer.schedule(task, Time.getTodayTime(17, 19));
 
-        task = new ConnectionPairTask(day, 4, browser);
+        task = new ConnectionMeetingTask(day, 4, browser);
         timer.schedule(task, Time.getTodayTime(17, 21));
-        task = new DisconnectionPairTask(day, 4, browser);
+        task = new DisconnectionMeetingTask(day, 4, browser);
         timer.schedule(task, Time.getTodayTime(17, 22));
 
         //Thread.currentThread().join();

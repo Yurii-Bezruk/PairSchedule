@@ -5,14 +5,14 @@ import start.Browser;
 
 import java.util.TimerTask;
 
-public abstract class PairTask extends TimerTask {
+public abstract class MeetingTask extends TimerTask {
     protected Browser browser;
     protected Day day;
-    protected int pairNumber;
+    protected int meetingNumber;
 
-    public PairTask(Day day, int pairNumber, Browser browser) {
+    public MeetingTask(Day day, int meetingNumber, Browser browser) {
         this.day = day;
-        this.pairNumber = pairNumber;
+        this.meetingNumber = meetingNumber;
         this.browser = browser;
     }
 

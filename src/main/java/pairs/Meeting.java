@@ -1,9 +1,9 @@
 package pairs;
 
-public class Pair {
+public class Meeting {
     private final String link;
 
-    public Pair(String link) {
+    public Meeting(String link) {
         this.link = link;
     }
 
