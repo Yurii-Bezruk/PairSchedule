@@ -15,7 +15,7 @@ public class DisconnectionPairTask extends PairTask{
         if (browser.isActive()) {
             try {
                 browser.disconnectFromPair(day.getPair(pairNumber));
-            } catch (PairNotAvailableException e) {}    //if pair is not available, do nothing
+            } catch (PairNotAvailableException ignored) {}    //if pair is not available, do nothing
         }
     }
 }

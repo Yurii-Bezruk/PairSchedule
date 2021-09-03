@@ -15,6 +15,6 @@ public class ConnectionPairTask extends PairTask {
             browser = new Browser();
         try {
             browser.connectToPair(day.getPair(pairNumber));
-        } catch (PairNotAvailableException e) {}    //if pair is not available, do nothing
+        } catch (PairNotAvailableException ignored) {}    //if pair is not available, do nothing
     }
 }
