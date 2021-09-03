@@ -1,5 +1,5 @@
 # PairSchedule
-Program for automatic connecting to set of google meets=. Powered by Spring Framework & Selenium WebDriver
+Program for automatic connecting to set of daily meetings in google meet. Powered by Spring Framework & Selenium WebDriver
 
 This program allows you to save your time by connecting to daily meetings. For its operation, it is necessary to configure the corresponding XML files 
 in the same directory with the program (configuration of meetings and links + configuration of days (which meetings at what time)). 
