@@ -1,8 +1,8 @@
-package tasks;
+package com.striker.meetings.tasks;
 
-import days.Day;
-import exceptions.MeetingNotAvailableException;
-import start.Browser;
+import com.striker.meetings.bean.Day;
+import com.striker.meetings.exceptions.MeetingNotAvailableException;
+import com.striker.meetings.util.Browser;
 
 public class ConnectionMeetingTask extends MeetingTask {
     public ConnectionMeetingTask(Day day, int meetingNumber, Browser browser) {

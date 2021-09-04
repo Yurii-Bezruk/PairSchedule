@@ -1,4 +1,4 @@
-package start;
+package com.striker.meetings.util;
 
 import java.util.Date;
 

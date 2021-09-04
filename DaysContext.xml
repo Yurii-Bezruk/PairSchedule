@@ -2,33 +2,33 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="monday" class="days.Day">
+    <bean id="monday" class="com.striker.meetings.bean.Day">
         <constructor-arg>
-            <map key-type="java.lang.Integer" value-type="pairs.Meeting">
+            <map key-type="java.lang.Integer" value-type="com.striker.meetings.bean.Meeting">
             </map>
         </constructor-arg>
     </bean>
-    <bean id="tuesday" class="days.Day">
+    <bean id="tuesday" class="com.striker.meetings.bean.Day">
         <constructor-arg>
-            <map key-type="java.lang.Integer" value-type="pairs.Meeting">
+            <map key-type="java.lang.Integer" value-type="com.striker.meetings.bean.Meeting">
             </map>
         </constructor-arg>
     </bean>
-    <bean id="wednesday" class="days.Day">
+    <bean id="wednesday" class="com.striker.meetings.bean.Day">
         <constructor-arg>
-            <map key-type="java.lang.Integer" value-type="pairs.Meeting">
+            <map key-type="java.lang.Integer" value-type="com.striker.meetings.bean.Meeting">
             </map>
         </constructor-arg>
     </bean>
-    <bean id="thursday" class="days.Day">
+    <bean id="thursday" class="com.striker.meetings.bean.Day">
         <constructor-arg>
-            <map key-type="java.lang.Integer" value-type="pairs.Meeting">
+            <map key-type="java.lang.Integer" value-type="com.striker.meetings.bean.Meeting">
             </map>
         </constructor-arg>
     </bean>
-    <bean id="friday" class="days.Day">
+    <bean id="friday" class="com.striker.meetings.bean.Day">
         <constructor-arg>
-            <map key-type="java.lang.Integer" value-type="pairs.Meeting">
+            <map key-type="java.lang.Integer" value-type="com.striker.meetings.bean.Meeting">
                 <entry key="1" value-ref="mathematicMethodsOfOperationsResearchLecture"/>
                 <entry key="2" value-ref="expertSystemsTheoryAndIntellijDataAnalysis"/>
             </map>

@@ -1,9 +1,9 @@
-package pairs;
+package com.striker.meetings.bean;
 
 public class Meeting {
-    private final String link;
+    private String link;
 
-    public Meeting(String link) {
+    public void setLink(String link) {
         this.link = link;
     }
 

@@ -1,9 +1,8 @@
-package days;
+package com.striker.meetings.bean;
 
-import exceptions.NotWorkingDayException;
-import exceptions.MeetingNotAvailableException;
-import pairs.Meeting;
-import start.Application;
+import com.striker.meetings.exceptions.NotWorkingDayException;
+import com.striker.meetings.exceptions.MeetingNotAvailableException;
+import com.striker.meetings.app.Application;
 
 import java.util.Calendar;
 import java.util.Map;

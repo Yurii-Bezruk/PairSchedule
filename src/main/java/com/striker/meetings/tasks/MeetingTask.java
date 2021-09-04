@@ -1,7 +1,7 @@
-package tasks;
+package com.striker.meetings.tasks;
 
-import days.*;
-import start.Browser;
+import com.striker.meetings.bean.Day;
+import com.striker.meetings.util.Browser;
 
 import java.util.TimerTask;
 

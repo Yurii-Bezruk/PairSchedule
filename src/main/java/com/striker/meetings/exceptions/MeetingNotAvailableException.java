@@ -1,4 +1,4 @@
-package exceptions;
+package com.striker.meetings.exceptions;
 
 public class MeetingNotAvailableException extends Exception{
     private final int meetingNumber;

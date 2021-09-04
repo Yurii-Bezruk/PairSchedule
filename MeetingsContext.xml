@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="scheduler" class="com.striker.meetings.bean.Scheduler">
+        <constructor-arg>
+            <list>
+                <ref bean="meeting1"/>
+                <ref bean="meeting2"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="meeting1" class="com.striker.meetings.bean.MeetTime">
+        <property name="start" value="8:30"/>
+        <property name="end" value="9:50"/>
+    </bean>
+    <bean id="meeting2" class="com.striker.meetings.bean.MeetTime">
+        <property name="start" value="10:10"/>
+        <property name="end" value="11:30"/>
+    </bean>
+
+    <bean id="mathematicMethodsOfOperationsResearchLecture" class="com.striker.meetings.bean.Meeting">
+        <property name="link" value="https://meet.google.com/hej-rdrx-xwe"/>
+    </bean>
+    <bean id="expertSystemsTheoryAndIntellijDataAnalysis" class="com.striker.meetings.bean.Meeting">
+        <property name="link" value="https://meet.google.com/isr-pipk-wwz"/>
+    </bean>
+</beans>

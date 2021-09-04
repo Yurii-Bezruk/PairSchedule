@@ -1,11 +1,11 @@
-package start;
+package com.striker.meetings.util;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pairs.Meeting;
+import com.striker.meetings.bean.Meeting;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

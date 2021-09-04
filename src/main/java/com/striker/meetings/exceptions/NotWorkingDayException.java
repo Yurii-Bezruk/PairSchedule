@@ -1,6 +1,4 @@
-package exceptions;
-
-import days.Day;
+package com.striker.meetings.exceptions;
 
 import java.util.Calendar;
 
