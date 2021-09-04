@@ -23,6 +23,7 @@
         <property name="link" value="https://meet.google.com/hej-rdrx-xwe"/>
     </bean>
     <bean id="expertSystemsTheoryAndIntellijDataAnalysis" class="com.striker.meetings.bean.Meeting">
-        <property name="link" value="https://meet.google.com/isr-pipk-wwz"/>
+<!--        <property name="link" value="https://meet.google.com/isr-pipk-wwz"/>-->
+        <property name="link" value="https://meet.google.com/zct-oyvx-kwj"/>
     </bean>
 </beans>

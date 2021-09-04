@@ -11,6 +11,10 @@ public final class Scheduler {
         this.meetings = meetings;
     }
 
+    public int getMeetingsCount(){
+        return meetings.length;
+    }
+
     public Date getMeetingStartTime(int meetingNumber){
         return getTime(meetings[meetingNumber - 1].getStart());
     }

@@ -7,52 +7,40 @@ import com.striker.meetings.util.Browser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import com.striker.meetings.tasks.ConnectionMeetingTask;
-
-import java.util.*;
+import java.util.Scanner;
+import java.util.Timer;
 
 public class Application {
     public static ApplicationContext CONTEXT = new FileSystemXmlApplicationContext("MeetingsContext.xml", "DaysContext.xml");
     public static void main(String[] args) {
-
-        Browser browser;
-        Day day;
-        TimerTask task;
-        Timer timer;
-        Scheduler scheduler = CONTEXT.getBean("scheduler", Scheduler.class);
-
-        browser = new Browser();
+        Day today;
         try {
-            day = Day.getCurrentWorkingDayOfWeek();
+            today = Day.getCurrentWorkingDayOfWeek();
         } catch (NotWorkingDayException e) {
             e.printStackTrace();
+            System.out.println("***** SCHEDULING CANCELLED *****");
             return;
         }
-        //day = CONTEXT.getBean("friday", Day.class);
-        timer = new Timer(true);
+        Scheduler scheduler = CONTEXT.getBean("scheduler", Scheduler.class);
+        Browser browser = new Browser();
+        Timer timer = new Timer(true);
 
-        task = new ConnectionMeetingTask(day, 1, browser);
-        timer.schedule(task, scheduler.getMeetingStartTime(1));
+        System.out.println("***** SCHEDULING STARTED *****");
+        for (int i = 0; i < scheduler.getMeetingsCount(); i++) {
+            timer.schedule(
+                    new ConnectionMeetingTask(today, i + 1, browser),
+                    scheduler.getMeetingStartTime(i + 1)
+            );
+        }
 
-        task = new ConnectionMeetingTask(day, 2, browser);
-        timer.schedule(task, scheduler.getMeetingStartTime(2));
-
-//        task = new ConnectionMeetingTask(day, 3, browser);
-//        timer.schedule(task, Time.getTodayTime(17, 19));
-//
-//        task = new ConnectionMeetingTask(day, 4, browser);
-//        timer.schedule(task, Time.getTodayTime(17, 21));
-//        task = new DisconnectionMeetingTask(day, 4, browser);
-//        timer.schedule(task, Time.getTodayTime(17, 22));
-
-        //Thread.currentThread().join();
-
-        Scanner s = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while(true){
-            if(s.nextLine().equals("exit"))
+            if(scanner.nextLine().equals("exit"))
                 break;
         }
         browser.close();
         timer.cancel();
-        System.out.println("TimerTask прекращена");
+        System.out.println("***** SCHEDULING FINISHED *****");
+        System.out.println("***** BROWSER CLOSED CORRECTLY *****");
     }
 }

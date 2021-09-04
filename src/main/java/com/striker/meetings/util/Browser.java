@@ -46,20 +46,28 @@ public class Browser {
     }
 
     public void connectToMeeting(Meeting meeting){
-        String link = meeting.getLink();
-        driver.get(link);
-        keyboard.clickKeys(KeyEvent.VK_ENTER);
-        sleep(3);
-        if(! link.contains("zoom")) {
-            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);   //mute micro
-            keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);   //mute camera
-            sleep(1);
-            driver.findElement(join).click();
+        try {
+            String link = meeting.getLink();
+            driver.get(link);
+            keyboard.clickKeys(KeyEvent.VK_ENTER);
+            sleep(3);
+            if(! link.contains("zoom")) {
+                keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_D);   //mute micro
+                keyboard.clickKeys(KeyEvent.VK_CONTROL, KeyEvent.VK_E);   //mute camera
+                sleep(1);
+                driver.findElement(join).click();
+            }
+        } catch (Exception any){
+            active = false;
         }
     }
     public void disconnectFromMeeting(Meeting meeting){
-        if(! meeting.getLink().contains("zoom")) {
-            driver.findElement(leave).click();
+        try {
+            if(! meeting.getLink().contains("zoom")) {
+                driver.findElement(leave).click();
+            }
+        } catch (Exception any){
+            active = false;
         }
     }
 
